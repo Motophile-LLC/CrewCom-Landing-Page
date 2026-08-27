@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 20 10% 6%;
+  --foreground: 30 20% 96%;
+  --card: 20 10% 9%;
+  --card-foreground: 30 20% 96%;
+  --popover: 20 10% 9%;
+  --popover-foreground: 30 20% 96%;
+  --primary: 22 95% 55%;
+  --primary-foreground: 20 10% 6%;
+  --secondary: 20 10% 14%;
+  --secondary-foreground: 30 20% 96%;
+  --muted: 20 10% 14%;
+  --muted-foreground: 24 8% 62%;
+  --accent: 22 95% 55%;
+  --accent-foreground: 20 10% 6%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 30 20% 96%;
+  --border: 20 10% 18%;
+  --input: 20 10% 18%;
+  --ring: 22 95% 55%;
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-barlow), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-oswald), system-ui, sans-serif;
+}
+
+.bg-grit {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 122, 26, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(255, 122, 26, 0.06), transparent 35%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px hsl(var(--primary) / 0.5);
+}
+
+.diagonal-cut {
+  clip-path: polygon(0 0, 100% 4%, 100% 96%, 0% 100%);
+}
+
+.metal-panel {
+  background: linear-gradient(155deg, hsl(20 10% 12%) 0%, hsl(20 10% 8%) 55%, hsl(20 10% 6%) 100%);
+  border: 1px solid hsl(var(--border));
+}
+
+.signal-divider {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    hsl(var(--primary) / 0.7) 0px,
+    hsl(var(--primary) / 0.7) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.waveform-bar {
+  animation: waveform 1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-14px) rotate(1deg); }
+}
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.scan-line {
+  animation: scan-line 3s linear infinite;
+}
