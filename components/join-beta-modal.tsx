@@ -21,7 +21,7 @@ export function JoinBetaModal({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", email: "", source: "", notes: "" });
+  const [form, setForm] = useState({ name: "", email: "", source: "", platform: "", notes: "" });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ export function JoinBetaModal({ children }: { children: React.ReactNode }) {
       const res = await joinWaitlist(form);
       if (res.success) {
         setSuccess(res.message || "Thank you for joining our waitlist!");
-        setForm({ name: "", email: "", source: "", notes: "" });
+        setForm({ name: "", email: "", source: "", platform: "", notes: "" });
       } else setError(res.error || "An error occurred.");
     } catch {
       setError("Something went wrong. Please try again.");
@@ -67,6 +67,14 @@ export function JoinBetaModal({ children }: { children: React.ReactNode }) {
             <div className="space-y-1">
               <Label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">Email Address</Label>
               <Input id="email" type="email" placeholder="dez@crewcom.app" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} className="rounded-sm border-white/10 bg-black/40" required disabled={loading} />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="platform" className="text-xs uppercase tracking-wider text-muted-foreground">Mobile OS</Label>
+              <select id="platform" value={form.platform} onChange={e => setForm({ ...form, platform: e.target.value })} className="flex h-10 w-full rounded-sm border border-white/10 bg-black/40 px-3 text-sm text-foreground appearance-none cursor-pointer" required disabled={loading}>
+                <option value="" disabled className="bg-background text-muted-foreground">Select your operating system</option>
+                <option value="ios" className="bg-background">iOS (iPhone)</option>
+                <option value="android" className="bg-background">Android</option>
+              </select>
             </div>
             <div className="space-y-1">
               <Label htmlFor="source" className="text-xs uppercase tracking-wider text-muted-foreground">How did you hear about us?</Label>

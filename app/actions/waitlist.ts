@@ -6,11 +6,12 @@ export type WaitlistInput = {
   name: string;
   email: string;
   source: string;
+  platform: string;
   notes?: string;
 };
 
 export async function joinWaitlist(input: WaitlistInput) {
-  const { name, email, source, notes } = input;
+  const { name, email, source, platform, notes } = input;
 
   // Server-side validation
   if (!name || name.trim() === "") {
@@ -19,6 +20,10 @@ export async function joinWaitlist(input: WaitlistInput) {
 
   if (!email || email.trim() === "" || !email.includes("@")) {
     return { success: false, error: "Please provide a valid email address." };
+  }
+
+  if (!platform || (platform !== "ios" && platform !== "android")) {
+    return { success: false, error: "Please select your mobile operating system." };
   }
 
   if (!source || source.trim() === "" || source === "select") {
@@ -52,6 +57,7 @@ export async function joinWaitlist(input: WaitlistInput) {
         name: name.trim(),
         email: normalizedEmail,
         source: source.trim(),
+        platform: platform,
         additional_notes: notes && notes.trim() !== "" ? notes.trim() : null,
       },
     ]);
