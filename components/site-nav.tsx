@@ -8,8 +8,9 @@ import { JoinBetaModal } from "@/components/join-beta-modal";
 
 const links = [
   { href: "#features", label: "Features" },
-  { href: "#captain", label: "Road Captain" },
+  { href: "#ducking-demo", label: "Priority Ducking" },
   { href: "#glove", label: "Glove UI" },
+  { href: "#pricing", label: "Host Plans" },
   { href: "#how", label: "How It Works" },
 ];
 

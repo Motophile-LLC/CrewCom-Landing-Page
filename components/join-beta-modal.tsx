@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { joinWaitlist } from "@/app/actions/waitlist";
+import { submitWaitlist } from "@/app/actions/waitlist";
 import { Check, Loader2 } from "lucide-react";
 
 export function JoinBetaModal({ children }: { children: React.ReactNode }) {
@@ -28,7 +28,7 @@ export function JoinBetaModal({ children }: { children: React.ReactNode }) {
     setLoading(true);
     setError(null);
     try {
-      const res = await joinWaitlist(form);
+      const res = await submitWaitlist(form);
       if (res.success) {
         setSuccess(res.message || "Thank you for joining our waitlist!");
         setForm({ name: "", email: "", source: "", platform: "", notes: "" });

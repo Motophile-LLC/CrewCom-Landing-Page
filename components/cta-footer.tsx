@@ -71,8 +71,8 @@ export function CtaFooter() {
             <a href="#features" className="hover:text-primary">
               Features
             </a>
-            <a href="#captain" className="hover:text-primary">
-              Road Captain
+            <a href="#pricing" className="hover:text-primary">
+              Host Plans
             </a>
             <a href="#how" className="hover:text-primary">
               How It Works

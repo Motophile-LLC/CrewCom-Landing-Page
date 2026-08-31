@@ -15,9 +15,9 @@ export default function Home() {
       <HeroSection />
       <StatStrip />
       <FeaturesGrid />
-      <CaptainSpotlight />
       <DestinationRules />
       <GloveUiShowcase />
+      <CaptainSpotlight />
       <HowItWorks />
       <CtaFooter />
     </main>

@@ -83,3 +83,5 @@ export async function joinWaitlist(input: WaitlistInput) {
     };
   }
 }
+
+export const submitWaitlist = joinWaitlist;

@@ -1,119 +1,92 @@
 "use client";
+import { Check, Shield, Zap, Sparkles, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { JoinBetaModal } from "@/components/join-beta-modal";
 
-import { Shield, Volume2, MapPin } from "lucide-react";
+const tiers = [
+  {
+    name: "Free", price: "$0", period: "forever", riders: "Max 2 Riders", time: "45-Min Room Cap",
+    desc: "For two riding buddies on casual commutes.",
+    features: ["Standard WebRTC audio", "Glove-friendly mute target", "Manual room cleanup"]
+  },
+  {
+    name: "Pro", price: "$4.99", period: "per month", riders: "Max 4 Riders", time: "Unlimited Time",
+    desc: "For small weekend squads on long distance runs.",
+    features: ["24 kbps speech preset", "Wind/exhaust noise filtering", "Automated 15-min cleanup"]
+  },
+  {
+    name: "Group Leader", price: "$9.99", period: "per month", riders: "Max 10 Riders", time: "Unlimited Time",
+    desc: "The sweet spot for local motorcycle clubs.",
+    features: ["1 Road Captain promotion slot", "15% Leadership Priority Ducking", "Real-time waypoint broadcasts"],
+    featured: true
+  },
+  {
+    name: "Club Host", price: "$19.99", period: "per month", riders: "Max 16 Riders", time: "Unlimited Time",
+    desc: "For full chapters, rallies, and multi-team road trips.",
+    features: ["Unlimited Captain/Sweep roles", "Persistent Room URLs", "Live GPS map breadcrumbs"]
+  }
+];
 
 export function CaptainSpotlight() {
   return (
-    <section id="captain" className="relative overflow-hidden bg-black/40 py-28">
-      <div className="signal-divider absolute left-0 top-0 w-full" />
-      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
-        <div>
-          <span className="font-display text-sm uppercase tracking-[0.3em] text-primary">
-            Chain of command
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
-            The Road Captain
-            <br />
-            always cuts through
-          </h2>
-          <p className="mt-6 max-w-lg text-lg text-muted-foreground">
-            Every Crew rides better with a lead voice. Give one rider Road
-            Captain status and they can duck everyone else&apos;s audio the
-            moment it matters — a hazard call, a route change, a &quot;pull
-            over now.&quot; No shouting over wind noise, no missed calls at
-            80 on the interstate.
+    <section id="pricing" className="py-24 bg-black/40 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6">
+        
+        <div className="mb-12 text-center max-w-2xl mx-auto">
+          <span className="font-display text-sm uppercase tracking-[0.3em] text-primary font-bold">Capacity & Pricing</span>
+          <h2 className="mt-2 font-display text-4xl font-extrabold uppercase sm:text-5xl text-foreground">Host-Pays Group Plans</h2>
+          <p className="mt-3 text-muted-foreground text-sm sm:text-base">
+            Only the session host needs a paid plan. Guest riders join and chat 100% free with zero meetup friction.
           </p>
+        </div>
 
-          <div className="mt-10 space-y-5">
-            {[
-              {
-                icon: Shield,
-                title: "Priority Channel",
-                desc: "Road Captain audio automatically ducks music and other riders' chatter.",
-              },
-              {
-                icon: MapPin,
-                title: "Route Authority",
-                desc: "Pushes the live next-destination link to the whole Crew in one tap.",
-              },
-              {
-                icon: Volume2,
-                title: "Full Volume Control",
-                desc: "Fine-tune how hard the duck hits and how loud each rider comes through.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-primary/30 bg-primary/10">
-                  <item.icon className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <div className="font-display text-base font-semibold uppercase tracking-wide">
-                    {item.title}
-                  </div>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
+        {/* Weekend Pass Banner */}
+        <div className="mb-12 max-w-4xl mx-auto rounded-xl border border-primary/30 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-5 flex flex-col sm:flex-row items-center gap-4 justify-between">
+          <div className="flex items-center gap-3 text-center sm:text-left flex-col sm:flex-row">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-primary/20 border border-primary/30">
+              <Calendar className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
+                <h4 className="font-display font-extrabold uppercase text-foreground text-sm sm:text-base">48-Hour Weekend Pass</h4>
+                <span className="rounded bg-primary px-1.5 py-0.5 text-[8px] uppercase tracking-widest font-bold text-primary-foreground">Only $2.99</span>
               </div>
-            ))}
+              <p className="text-xs text-muted-foreground mt-0.5">Non-recurring single-use pass granting 16-rider Club Host privileges for exactly 48 hours.</p>
+            </div>
           </div>
+          <JoinBetaModal><Button className="rounded bg-primary/20 hover:bg-primary text-primary-foreground font-bold tracking-wider uppercase text-[10px] px-4 py-4 shrink-0">Get Pass</Button></JoinBetaModal>
         </div>
 
-        <div className="relative">
-          <div className="metal-panel diagonal-cut relative overflow-hidden rounded-xl p-8">
-            <div className="scan-line absolute left-0 top-0 h-1/2 w-full bg-gradient-to-b from-primary/10 to-transparent" />
-            <div className="mb-6 flex items-center justify-between">
-              <span className="font-display text-xs uppercase tracking-widest text-muted-foreground">
-                Live Crew Channel
-              </span>
-              <span className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-display text-xs uppercase tracking-widest text-primary">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> On Air
-              </span>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                { name: "Road Captain — Dez", active: true, level: 100 },
-                { name: "Rider — Marisol", active: false, level: 40 },
-                { name: "Rider — Jonesy", active: false, level: 15 },
-                { name: "Rider — Ay", active: false, level: 60 },
-              ].map((rider) => (
-                <div
-                  key={rider.name}
-                  className={`flex items-center justify-between rounded-md border px-4 py-3 ${
-                    rider.active
-                      ? "border-primary/50 bg-primary/10"
-                      : "border-white/10 bg-white/[0.02]"
-                  }`}
-                >
-                  <span
-                    className={`font-display text-sm uppercase tracking-wide ${
-                      rider.active ? "text-primary" : "text-foreground"
-                    }`}
-                  >
-                    {rider.name}
-                  </span>
-                  <div className="flex items-end gap-0.5">
-                    {[4, 8, 12, 8, 4].map((h, i) => (
-                      <span
-                        key={i}
-                        className={`waveform-bar w-1 rounded-full ${
-                          rider.active ? "bg-primary" : "bg-muted-foreground/40"
-                        }`}
-                        style={{
-                          height: `${(h * rider.level) / 100}px`,
-                          animationDelay: `${i * 0.1}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
+        {/* Pricing Cards Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          {tiers.map((t) => (
+            <div key={t.name} className={`metal-panel rounded-xl p-5 flex flex-col justify-between relative transition-all ${t.featured ? "border-primary/50 bg-gradient-to-b from-primary/10 to-transparent shadow-lg shadow-primary/5 scale-102" : "border-white/10 bg-white/[0.01]"}`}>
+              {t.featured && <span className="absolute top-3 right-3 rounded bg-primary px-1.5 py-0.5 text-[8px] uppercase tracking-widest font-extrabold text-primary-foreground"><Sparkles className="h-2 w-2 inline mr-0.5" /> Featured</span>}
+              <div>
+                <span className="font-display text-xs uppercase tracking-wider text-muted-foreground">{t.name}</span>
+                <div className="mt-2 flex items-baseline gap-1">
+                  <span className="font-display text-3xl font-extrabold text-foreground">{t.price}</span>
+                  <span className="text-[10px] text-muted-foreground">/{t.period}</span>
                 </div>
-              ))}
+                <div className="mt-3 border-y border-white/5 py-2 space-y-0.5">
+                  <div className="font-display text-xs uppercase tracking-wide font-extrabold text-primary flex items-center gap-1"><Zap className="h-3 w-3" /> {t.riders}</div>
+                  <div className="text-[10px] text-muted-foreground font-bold uppercase font-mono">{t.time}</div>
+                </div>
+                <p className="mt-2 text-[11px] text-muted-foreground leading-normal">{t.desc}</p>
+                <ul className="mt-4 space-y-2">
+                  {t.features.map((f) => (
+                    <li key={f} className="flex items-start gap-1.5 text-[11px] text-muted-foreground leading-normal">
+                      <Check className="h-3.5 w-3.5 shrink-0 text-primary mt-0.5" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-6"><JoinBetaModal><Button className={`w-full py-4 rounded text-[10px] uppercase tracking-widest font-bold ${t.featured ? "bg-primary hover:bg-primary/90 text-primary-foreground" : "bg-white/5 hover:bg-white/10 text-foreground border border-white/10"}`}>Choose {t.name}</Button></JoinBetaModal></div>
             </div>
-
-            <div className="mt-6 rounded-md border border-dashed border-primary/30 bg-primary/5 px-4 py-3 text-center font-display text-xs uppercase tracking-widest text-primary">
-              &quot;Merging left, stay in formation&quot; — duck active
-            </div>
-          </div>
+          ))}
         </div>
+
       </div>
     </section>
   );
