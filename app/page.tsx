@@ -2,6 +2,7 @@ import { SiteNav } from "@/components/site-nav";
 import { HeroSection } from "@/components/hero-section";
 import { StatStrip } from "@/components/stat-strip";
 import { FeaturesGrid } from "@/components/features-grid";
+import { ScenarioExplorer } from "@/components/scenario-explorer";
 import { CaptainSpotlight } from "@/components/captain-spotlight";
 import { DestinationRules } from "@/components/destination-rules";
 import { GloveUiShowcase } from "@/components/glove-ui-showcase";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <StatStrip />
       <FeaturesGrid />
+      <ScenarioExplorer />
       <DestinationRules />
       <GloveUiShowcase />
       <CaptainSpotlight />
